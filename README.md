@@ -1,2 +1,3 @@
-# DjangoValorant
-Valorant guide and player info
+# DjangoFGO
+FGO guide servant
+

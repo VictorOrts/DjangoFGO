@@ -1,0 +1,40 @@
+.bold_text {
+    font-weight: bold;
+}
+
+.caster {
+    content:url('/static/img/caster.png');
+}
+.saber {
+    content:url('/static/img/saber.png');
+}
+.archer {
+    content:url('/static/img/archer.png');
+}
+.lancer {
+    content:url('/static/img/lancer.png');
+}
+.rider {
+    content:url('/static/img/rider.png');
+}
+.berserker {
+    content:url('/static/img/berserker.png');
+}
+.assassin {
+    content:url('/static/img/assassin.png');
+}
+.ruler {
+    content:url('/static/img/ruler.png');
+}
+.avenger {
+    content:url('/static/img/avenger.png');
+}
+.moonCancer {
+    content:url('/static/img/moonCancer.png');
+}
+.alterEgo {
+    content:url('/static/img/alterEgo.png');
+}
+.shielder {
+    content:url('/static/img/shielder.png');
+}

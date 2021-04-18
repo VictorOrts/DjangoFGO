@@ -17,3 +17,9 @@ class Servantch(models.Model):
 
     def __str__(self):
         return self.name
+
+class infoCharacter(models.Model):
+    unique_id = models.CharField(max_length=8,primary_key=True)
+    name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name

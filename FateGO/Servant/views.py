@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Servantch
+import datetime
+from django.http import HttpResponse
 import requests
 # Create your views here.
 
+async def current_datetime(request):
+    now = datetime.datetime.now()
+    html = '<html><body>It is now %s.</body></html>' % now
+    return HttpResponse(html)
 
 def Servant(request):
     all_meals = {}
@@ -34,3 +40,8 @@ def Servant(request):
     
     return render (request, 'main.html', { "all_meals": 
     all_meals} )
+
+def informationCharacter(request,collectionNo):
+   print("Info character")
+   url = 'https://api.atlasacademy.io/basic/NA/servant/'+str(collectionNo)
+   return redirect(url)

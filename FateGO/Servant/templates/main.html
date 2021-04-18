@@ -3,7 +3,8 @@
 <html>
   <head>
     <title>FateGO Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     {% load static %}
@@ -26,28 +27,29 @@
     </div>  
 {% endblock %}
 <div class="row">
-  {% for servant in all_meals %}
+    {% for servant in all_meals %}
     <div class="col-sm-2">
-      <div class="card justify-content-center" style="width: 256px;">
+      <div class="card justify-content-center" style="width: 275px;">
         <div class="card-header  text-center">
+          <a href="{{ servant.collectionNo}} ">
           <p class="card-title bold_text">{{ servant.name }}</p>
+          </a>
         </div>
-        <img class="card-img-top" src="{{ servant.face }}" alt="Card image cap">
-        <div class="card-body text-center">
-          
-          <p class="card-text" style="text-transform: capitalize;">{{ servant.attribute }}</p>
-          <p class="card-text"> Atk : {{ servant.atkMax }}</p>
-          <p class="card-text">Hp : {{ servant.hpMax }}</p>
-          <p class="card-text">{{ servant.rarity }}★</p>
-          
-        </div>
+          <img class="card-img-top" src="{{ servant.face }}" alt="Card image cap">
+          <div class="card-body text-center">
+            <p class="card-text" style="text-transform: capitalize;">{{ servant.attribute }}</p>
+            <p class="card-text"> Atk : {{ servant.atkMax }}</p>
+            <p class="card-text">Hp : {{ servant.hpMax }}</p>
+            <p class="card-text">{{ servant.rarity }}★</p>
+          </div>
         <div class="card-footer text-center">
           <img class="{{ servant.className }}" >
         </div>
       </div>
       <br><br><br>
     </div>
-  {% endfor %}
+    {% endfor %}
+  
 </div>
 <footer>
   {% include "static/webs/footer.html" %}

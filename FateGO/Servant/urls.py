@@ -17,6 +17,8 @@ from django.urls import path
 from Servant import views
 
 urlpatterns = [
-    path('', views.Servant, name='servant')
+    path('', views.Servant, name='servant'),
+    path('a', views.current_datetime, name='current_datetime'),
+    path('<int:collectionNo>', views.informationCharacter, name='informationCharacter'),
 ]
 

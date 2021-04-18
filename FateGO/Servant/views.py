@@ -10,8 +10,8 @@ def Servant(request):
     response = requests.get(url)
     data = response.json()
     servant = data
-    print(servant)
     for i in servant:
+        b = 0
         meal_data = Servantch(
             unique_id  = i['id'],
             collectionNo = i['collectionNo'],
@@ -25,8 +25,12 @@ def Servant(request):
             hpMax = i['hpMax'],
             face = i['face']
         )
-        meal_data.save()
-        all_meals = Servantch.objects.all().order_by('collectionNo')
+        # Code to avoid className beast not servants
+        positionbeast = meal_data.className.find("beast")
+        meal_data.save() if positionbeast < b else meal_data.delete()
+        all_meals = Servantch.objects.all()
 
+    all_meals.order_by('-collectionNo')
+    
     return render (request, 'main.html', { "all_meals": 
     all_meals} )

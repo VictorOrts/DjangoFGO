@@ -58,6 +58,10 @@ def Servant(request):
 
 def informationCharacter(request,collectionNo):
    print("Info character")
-   url = 'https://api.atlasacademy.io/basic/NA/servant/'+str(collectionNo)
-   return redirect(url)
+   url = 'https://api.atlasacademy.io/nice/NA/servant/'+str(collectionNo)
+   #return redirect(url)
+   response = requests.get(url)
+   data = response.json()
+   return render (request, 'static/webs/detail.html', { "character_info": 
+    data} )
 

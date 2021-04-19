@@ -10,10 +10,24 @@ async def current_datetime(request):
     html = '<html><body>It is now %s.</body></html>' % now
     return HttpResponse(html)
 
+
+     
+
+
 def Servant(request):
-    all_meals = {}
-    url = 'https://api.atlasacademy.io/export/NA/basic_servant.json'
-    response = requests.get(url)
+    servantfilter = request.GET.get('servant')
+    print(servantfilter)
+    mainurl=""
+    if servantfilter:
+        print(servantfilter)
+        url2 = 'https://api.atlasacademy.io/basic/NA/servant/search?lang=en&name='+servantfilter
+        mainurl = url2
+    else:
+        url = 'https://api.atlasacademy.io/export/NA/basic_servant.json'
+        mainurl = url
+
+    all_meals = []
+    response = requests.get(mainurl)
     data = response.json()
     servant = data
     for i in servant:
@@ -34,10 +48,11 @@ def Servant(request):
         # Code to avoid className beast not servants
         positionbeast = meal_data.className.find("beast")
         meal_data.save() if positionbeast < b else meal_data.delete()
-        all_meals = Servantch.objects.all()
+        namefilter = meal_data.name.find("servantfilter")
+        meal_data.save() if namefilter < b else meal_data.delete()
+        all_meals.append(meal_data)
 
-    all_meals.order_by('-collectionNo')
-    
+    #all_meals.order_by('-collectionNo')
     return render (request, 'main.html', { "all_meals": 
     all_meals} )
 
@@ -45,3 +60,4 @@ def informationCharacter(request,collectionNo):
    print("Info character")
    url = 'https://api.atlasacademy.io/basic/NA/servant/'+str(collectionNo)
    return redirect(url)
+

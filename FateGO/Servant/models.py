@@ -17,6 +17,8 @@ class Servantch(models.Model):
 
     def __str__(self):
         return self.name
+    def get_collectionNo(self):
+        return self.collectionNo
 
 class infoCharacter(models.Model):
     unique_id = models.CharField(max_length=8,primary_key=True)

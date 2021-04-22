@@ -5,7 +5,6 @@
     <title>FateGO Guide</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/fatego.css' %}">
@@ -13,60 +12,54 @@
   </head>
   <body>
 
-    <div id="content" class="contentwrap">        
-        <style>
-        #snowbox	{min-width: 1175px;}
-        .footerwrap	{min-width: 1175px;}
-        .bodywrap	{min-width: 1175px;}
-        table#rounded-corner tbody tr td.parEX		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center 5px;}
-        table#rounded-corner tbody tr td.parA		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -55px;}
-        table#rounded-corner tbody tr td.parB		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -115px;}
-        table#rounded-corner tbody tr td.parC		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -175px;}
-        table#rounded-corner tbody tr td.parD		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -235px;}
-        table#rounded-corner tbody tr td.parE		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -295px;}
-        table#rounded-corner tbody tr td.par		{background-image:url("scripts/img/par01.png"); background-repeat:no-repeat; background-position: center -355px;}
-        table#rounded-corner tbody tr td			{font-size: 13px;}
-        table#rounded-corner.status tbody tr td		{width: 35%;}
-        table#rounded-corner tbody tr td.profile	{width: 15%;}
-        select#menu	{margin: 10px 0px 0px 0px;}
-        a.youtube {display: block; width: 895px;}
-        a.youtube div, div.youtube {width: 895px; height: 505px; background-position: top left, center center; background-size: 100% 200%, 102% 102%; background-repeat: no-repeat, no-repeat; color: white; padding: 10px 15px; box-sizing: border-box; font-size: 16px; cursor: pointer; border: 1px solid #ffffff; margin: 10px 5px 5px 5px;}
-        a.youtube div:hover, div.youtube:hover {background-position: bottom left, center center;}
-        </style>
-        
+    <div id="content" class="text-center">                
         <h1>Servant Profile</h1>
-        
 
-        <nav id="top" style="width: 900px;">
-            <li><a href="#status">Status</a></li>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#interlude">Interlude</a></li>
-            <li><a href="#ascension">Ascension</a></li>
-            <li><a href="#skill">Skill Upgrade</a></li>
-            <li><a href="#maxbond">Max Bond CE</a></li>
-        </nav><br>
-        
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Status</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Interlude</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ascension</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Skill Upgrade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Max Bond CE</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
         
         <div id="status" class="section" style="width: 910px;"><h2>Status</h2></div>
-                {% for key, value in character_info.extraAssets.charaGraph.ascension.items %}
-                <a class="fancybox" rel="servant" href="" title="Default">
-                    <div style="
-                        width: 220px; 
-                        height: 376px; 
-                        float: left; 
-                        margin: 10px 0px 10px 5px; 
-                        background-image: url({{value}}); 
-                        background-size: 100% 100%;
-                        background-position:  0% 0%;
-                        background-repeat: no-repeat">
-                    </div>
-                </a>
-                
-                {% endfor %}
-                    
+            {% for key, value in character_info.extraAssets.charaGraph.ascension.items %}
+            <a class="fancybox" rel="servant" href="" title="Default">
+                <div style="
+                    width: 220px; 
+                    height: 376px; 
+                    float: left; 
+                    margin: 10px 0px 10px 5px; 
+                    background-image: url({{value}}); 
+                    background-size: 100% 100%;
+                    background-position:  0% 0%;
+                    background-repeat: no-repeat">
+                </div>
+            </a>
 
-                    <a class="fancybox" rel="servant" href="icons/servant_card/0015.jpg" title="Spiritron Dress"></a>
-        <div style="clear:both;"></div>
+            {% endfor %}
         
         <a href="#status">
         <div class="border" style="width: 895px; margin-top:0px;">
@@ -186,715 +179,23 @@
         </div></a>
         
         <a href="#status">
+        {% for skills in character_info.skills %}
         <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Servant Skills</th>
-                </tr>
-            </thead>
-            <tbody>
-            
+            <div class="row ">
+                <div class="col-6 col-sm-6"><img src="{{skills.icon}}" width="50px" height="50px"></div>
+                <div class="col-6 col-sm-6">{{skills.name}}</div>
                 
-                            <tr id="transientwallofsnowflakes">
-                                <td class="profile" style="width:10px; text-align: center;" rowspan="3">
-                                    <a href="skill.php#transientwallofsnowflakes" title="今は脆き雪花の壁">
-                                    <img style="width:80px; height:80px;" src="icons/skill/skill_007.png"></a>
-                                </td><td class="desc" colspan="6">
-                                    <spanh>Transient Wall of Snowflakes</spanh><br>
-                                    Increase DEF (3 turns)<font color="#ff406c"></font>
-                                </td><td colspan="2">Target:<br>All Allies
-                                </td><td colspan="2">Charge Time:<br>7 turn(s)
-                            </td></tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="profile" style="width:9%;">Lv.1</td>
-                                <td class="profile" style="width:9%;">Lv.2</td>
-                                <td class="profile" style="width:9%;">Lv.3</td>
-                                <td class="profile" style="width:9%;">Lv.4</td>
-                                <td class="profile" style="width:9%;">Lv.5</td>
-                                <td class="profile" style="width:9%;">Lv.6</td>
-                                <td class="profile" style="width:9%;">Lv.7</td>
-                                <td class="profile" style="width:9%;">Lv.8</td>
-                                <td class="profile" style="width:9%;">Lv.9</td>
-                                <td class="profile" style="width:9%;">Lv.10</td>
-                            </tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="cell">10%
-                                </td><td class="cell">10.5%
-                                </td><td class="cell">11%
-                                </td><td class="cell">11.5%
-                                </td><td class="cell">12%
-                                </td><td class="cell"><font style="color: #e57e00;">12.5%</font>
-                                </td><td class="cell">13%
-                                </td><td class="cell">13.5%
-                                </td><td class="cell">14%
-                                </td><td class="cell"><font style="color: #e57e00;">15%
-        </font>
-                            </td></tr>
-                            <tr id="obscurantwallofchalk">
-                                <td class="profile" style="width:10px; text-align: center;" rowspan="3">
-                                    <a href="skill.php#obscurantwallofchalk" title="時に煙る白亜の壁">
-                                    <img style="width:80px; height:80px;" src="icons/skill/skill_009.png"></a>
-                                </td><td class="desc" colspan="6">
-                                    <spanh>Obscurant Wall of Chalk</spanh><br>
-                                    Apply Invincible (1 turn)<br>Increase NP Gauge<font color="#ff406c"></font>
-                                </td><td colspan="2">Target:<br>Ally
-                                </td><td colspan="2">Charge Time:<br>9 turn(s)
-                            </td></tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="profile" style="width:9%;">Lv.1</td>
-                                <td class="profile" style="width:9%;">Lv.2</td>
-                                <td class="profile" style="width:9%;">Lv.3</td>
-                                <td class="profile" style="width:9%;">Lv.4</td>
-                                <td class="profile" style="width:9%;">Lv.5</td>
-                                <td class="profile" style="width:9%;">Lv.6</td>
-                                <td class="profile" style="width:9%;">Lv.7</td>
-                                <td class="profile" style="width:9%;">Lv.8</td>
-                                <td class="profile" style="width:9%;">Lv.9</td>
-                                <td class="profile" style="width:9%;">Lv.10</td>
-                            </tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="cell">-<br>10%
-                                </td><td class="cell">-<br>11%
-                                </td><td class="cell">-<br>12%
-                                </td><td class="cell">-<br>13%
-                                </td><td class="cell">-<br>14%
-                                </td><td class="cell"><font style="color: #e57e00;">-<br>15%</font>
-                                </td><td class="cell">-<br>16%
-                                </td><td class="cell">-<br>17%
-                                </td><td class="cell">-<br>18%
-                                </td><td class="cell"><font style="color: #e57e00;">-<br>20%
-        </font>
-                            </td></tr>
-                            <tr id="shieldofrousingresolution">
-                                <td class="profile" style="width:10px; text-align: center;" rowspan="3">
-                                    <a href="skill.php#shieldofrousingresolution" title="奮い断つ決意の盾">
-                                    <img style="width:80px; height:80px;" src="icons/skill/skill_012.png"></a>
-                                </td><td class="desc" colspan="6">
-                                    <spanh>Shield of Rousing Resolution</spanh><br>
-                                    Apply Target Focus (1 turn)<br>Increase NP Gain (1 turn)<font color="#ff406c"></font>
-                                </td><td colspan="2">Target:<br>Self
-                                </td><td colspan="2">Charge Time:<br>8 turn(s)
-                            </td></tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="profile" style="width:9%;">Lv.1</td>
-                                <td class="profile" style="width:9%;">Lv.2</td>
-                                <td class="profile" style="width:9%;">Lv.3</td>
-                                <td class="profile" style="width:9%;">Lv.4</td>
-                                <td class="profile" style="width:9%;">Lv.5</td>
-                                <td class="profile" style="width:9%;">Lv.6</td>
-                                <td class="profile" style="width:9%;">Lv.7</td>
-                                <td class="profile" style="width:9%;">Lv.8</td>
-                                <td class="profile" style="width:9%;">Lv.9</td>
-                                <td class="profile" style="width:9%;">Lv.10</td>
-                            </tr>
-                            <tr>
-                                <td class="hidden">
-                                </td><td class="cell">-<br>200%
-                                </td><td class="cell">-<br>220%
-                                </td><td class="cell">-<br>240%
-                                </td><td class="cell">-<br>260%
-                                </td><td class="cell">-<br>280%
-                                </td><td class="cell"><font style="color: #e57e00;">-<br>300%</font>
-                                </td><td class="cell">-<br>320%
-                                </td><td class="cell">-<br>340%
-                                </td><td class="cell">-<br>360%
-                                </td><td class="cell"><font style="color: #e57e00;">-<br>400%
-        </font>
-                            </td></tr>		<tr>
-                    <td class="profile" colspan="11" style="text-align: center;">Skill Charge Time will be reduced by 1 turn at <font color="red">[Lv.6]</font> and <font color="red">[Lv.10]</font>, reducing it by a total of 2 turns when you reach maximum level.</td>
-                </tr>
-                
-            </tbody>
-        </table>
-        </div></a>
-        
-        <a href="#status">
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover classskills" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Class Skills</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                            <tr id="magicresistancea">
-                                <td class="profile" style="width:5%; text-align: center;">
-                                    <a href="skill.php#magicresistancea" title="対魔力 A">
-                                    <img style="width:80px; height:80px;" src="icons/skill/skill_027.png"></a>
-                                </td><td class="desc" style="width:95%;">
-                                    <spanh>Magic Resistance A</spanh><br>
-                                    Increase Debuff Resist by 20%
-                            </td></tr>
-                            <tr id="ridingc">
-                                <td class="profile" style="width:5%; text-align: center;">
-                                    <a href="skill.php#ridingc" title="騎乗 C">
-                                    <img style="width:80px; height:80px;" src="icons/skill/skill_028.png"></a>
-                                </td><td class="desc" style="width:95%;">
-                                    <spanh>Riding C</spanh><br>
-                                    Increase Quick Card effectiveness by 6%
-                            </td></tr>		
-            </tbody>
-        </table>
-        </div></a>
-        
-        <a href="#status">
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Noble Phantasm</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr id="001">
-                        <td class="profile" style="width:10px;padding:4px;" rowspan="3">
-                            <a href="servant_np.php#001">
-                            <img style="width: 90px; height: 90px;" src="icons/pattern/pattern_02.png">
-                        </a></td><td class="desc" colspan="3">
-                            <spanh>Lord Chaldeas</spanh><br>
-                            <font style="font-size: 11px;">Virtual Noble Phantasm, Pseudo-Deployment / Humanity's Foundation</font><br>
-                            <font style="font-size: 4px;"><br></font>
-                            Increase DEF of all allies  (3 turns) <span class="blue">＜OVERCHARGE＞</span><br>Apply Damage Cut (3 turns) <span class="green">＜LEVEL＞</span><font class="notice"></font>
-                        </td><td>Target:<br>All Allies
-                        </td><td>Anti-Personnel<br>Rank: D
-                    </td></tr>
-                    <tr>
-                        <td class="hidden">
-                        </td><td class="profile" style="width:18%;">Lv.1</td>
-                        <td class="profile" style="width:18%;">Lv.2</td>
-                        <td class="profile" style="width:18%;">Lv.3</td>
-                        <td class="profile" style="width:18%;">Lv.4</td>
-                        <td class="profile" style="width:18%;">Lv.5</td>
-                    </tr>
-                    <tr>
-                        <td class="hidden">
-                        </td><td style="text-align: right;">30%<br>100
-                        </td><td style="text-align: right;">35%<br>550
-                        </td><td style="text-align: right;">40%<br>775
-                        </td><td style="text-align: right;">45%<br>888
-                        </td><td style="text-align: right;">50%<br>1000
-        
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div></a>
-        
-        <a class="youtube" rel="noreferrer nofollow" target="_blank" href="https://www.youtube.com/watch?v=gg15uvYR-cs"><div style="background-image: url('scripts/img/youtube_frame.png'), url('img/np/001.jpg');">Mash Kyrielight - Lord Chaldeas</div></a>
-        <a href="#status">
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Command Cards</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr><td>
-                        <img src="icons/pattern/pattern_01.png" style="width:100px; height:100px;">
-                        <img src="icons/pattern/pattern_02.png" style="width:100px; height:100px;">
-                        <img src="icons/pattern/pattern_02.png" style="width:100px; height:100px;">
-                        <img src="icons/pattern/pattern_03.png" style="width:100px; height:100px;">
-                        <img src="icons/pattern/pattern_03.png" style="width:100px; height:100px;">
-                    </td>
-                            
-            </tr></tbody>
-        </table>
-        </div></a><br>
-        
-        <div id="profile" class="section" style="width: 910px;"><h2>Profile</h2></div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Illustrator and Voice</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="profile">Illustrator
-                        </td><td class="desc"><a href="illustrator.php#Takeuchi Takashi">Takeuchi Takashi</a>
-                    </td></tr>
-                    <tr>
-                        <td class="profile">CV
-                        </td><td class="desc"><a href="cv.php#Takahashi Rie">Takahashi Rie</a>
-                    </td></tr>		
-            </tbody>
-        </table>
+                <!-- Force next columns to break to new line at md breakpoint and up -->
+                <div class="w-100 d-none d-md-block"></div>
+                <div class="col-6 col-sm-4"> </div>
+                <div class="col-6 col-sm-4">{{skills.detail}}</div>
+            </div>
         </div>
-        
-        <a href="#profile">
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Character Info</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2">The figure of Mash Kyrielight, a Chaldean clerk, who underwent a possession union with a Servant. A so-called Demi-Servant.
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Parameters</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="profile">Strength
-                        </td><td class="desc parC" style="width:35%">C
-                        </td><td class="profile">Endurance
-                        </td><td class="desc parA" style="width:35%">A
-                    </td></tr>
-                    <tr>
-                        <td class="profile">Agility
-                        </td><td class="desc parD" style="width:35%">D
-                        </td><td class="profile">Magic
-                        </td><td class="desc parB" style="width:35%">B
-                    </td></tr>
-                    <tr>
-                        <td class="profile">Luck
-                        </td><td class="desc parC" style="width:35%">C
-                        </td><td class="profile">NP
-                        </td><td class="desc par" style="width:35%">
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 1</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="profile">Height &amp; Weight
-                        </td><td class="desc" style="width:35%">158 cm ・ 46 kg
-                        </td><td class="profile">Alignment
-                        </td><td class="desc" style="width:35%">Lawful Good
-                    </td></tr>
-                    <tr>
-                        <td class="profile">Series
-                        </td><td class="desc" style="width:35%">Fate/Grand Order
-                        </td><td class="profile">Gender
-                        </td><td class="desc" style="width:35%">Female
-                    </td></tr>
-                    <tr>
-                        <td class="profile">Origin
-                        </td><td class="desc" style="width:35%">-
-                        </td><td class="profile">Region
-                        </td><td class="desc" style="width:35%">Chaldea
-                    </td></tr>
-                    <tr>
-                        <td class="profile">Comment
-                        </td><td class="desc" style="width:35%" colspan="4">-
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 2</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2"><spanh>Lord Chaldeas</spanh><br>Virtual Noble Phantasm Pseudo-Deployment: Cornerstone of Humanity's Foundation</td><td class="desc2" style="width: 25%;">Rank: D<br>Type: Anti-Personnel</td></tr><tr><td class="desc2" colspan="2">The Noble Phantasm deployed by Mash in accordance to her instincts, without understanding the True Name of the Heroic Spirit possessing her. As for why it is crowned with the name of Chaldea, one would think that is because the wish that lies on Mash's basis is ｢to see the future of mankind｣.
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 3</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2"><spanh>Self-Field Defense: C</spanh></td></tr><tr><td class="desc2">A power displayed when protecting allies or an allied camp. Exhibits damage reduction surpassing the defensive limit value, but she herself is not affected. Also, the higher the Rank the more it spreads its protective range.
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 4</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2"><spanh>Possession Inheritance: ?</spanh></td></tr><tr><td class="desc2">Succeed Phantasm. An unique Skill that Demi-Servants possess. One of the Skills that the possessing Heroic Spirit owns is inherited and sublimated in a self-taught manner. In Mash's case, it is ｢Mana Defense｣. A Skill of the same type as ｢Mana Burst｣, magical power is translated directly into defensive power. For a Heroic Spirit possessing a huge magical power, it would probably become a sacred wall that protects a whole country.
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 5</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2">Mash has obtained the True Name of the Heroic Spirit possessing her.<br>The name of that knight is <spoiler>Galahad</spoiler>.<br>One of the Knights of the Round Table from Arthurian Legends.<br>The saint who was the only one to obtain the Holy Grail, just to return it to the heavens.<br>Chaldea had succeed in summoning Heroic Spirits with its own original method, but what lies at its foundation is the ｢place where heroes assemble｣ - the shield held by Mash, were once used for the Round Table and became the catalyst for summoning <spoiler>Galahad</spoiler>.
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div>
-        
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Background 6</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-                
-                    <tr>
-                        <td class="desc2"><font color="red">Unlocked by clearing a certain quest</font>
-                    </td></tr>		
-            </tbody>
-        </table>
-        </div></a><br>
-        
-        <div id="interlude" class="section" style="width: 910px;"><h2>Interlude Quest</h2></div>
-        
-        <div class="border" style="width: 895px;">
-            <table id="rounded-corner" class="height2" style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width:  10%">Chapter</th>
-                        <th scope="col" style="width:  29%">Interlude Quest</th>
-                        <th scope="col" style="width:  12.5%">Ascension</th>
-                        <th scope="col" style="width:  12.5%;">Bond</th>
-                        <th scope="col" style="width:  14%;">Clear</th>
-                        <th scope="col" style="width:  17%;">Reward</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="50">
-                            <nav id="mini">
-                                <li><a href="#nav" class="left right"><span class="bullet_top"></span></a></li>
-                            </nav>
-                        </td>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr><td>None</td><td class="desc"></td><td></td><td></td><td></td><td></td></tr>														</tbody>
-            </table>
-        </div><br>
-        
-        <div id="ascension" class="section" style="width: 910px;"><h2>Ascension Materials</h2></div>
-        
-        <div class="border" style="width: 895px;">
-            <table id="rounded-corner" style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width:  20%">Ascension</th>
-                        <th scope="col" style="width:  20%">Cost</th>
-                        <th scope="col" style="width:  60%">Required Materials</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="50">
-                            <nav id="mini">
-                                <li><a href="#nav" class="left right"><span class="bullet_top"></span></a></li>
-                            </nav>
-                        </td>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr><td><span style="font-size: 18px;"><font color="orange">✦</font><font color="lightgray">✦✦✦</font></span><br>Stage 1 Ascension	</td><td>N/A</td><td>Story Unlock:<br>2nd Singularity: Septem</td></tr>
-        <tr><td><span style="font-size: 18px;"><font color="orange">✦✦</font><font color="lightgray">✦✦</font></span><br>Stage 2 Ascension	</td><td>N/A</td><td>Story Unlock:<br>4th Singularity: London</td></tr>
-        <tr><td><span style="font-size: 18px;"><font color="orange">✦✦✦</font><font color="lightgray">✦</font></span><br>Stage 3 Ascension	</td><td>N/A</td><td>Story Unlock:<br>6th Singularity: Camelot</td></tr>
-        <tr><td><span style="font-size: 18px;"><font color="orange">✦✦✦✦</font></span><br>Stage 4 Ascension	</td><td>N/A</td><td>Story Unlock:<br>7th Singularity: Babylonia</td></tr>
-                </tbody>
-            </table>
-        </div><br>
-        
-        <div id="skill" class="section" style="width: 910px;"><h2>Skill Enhancement Materials</h2></div>
-        
-        <div class="border" style="width: 895px;">
-            <table id="rounded-corner" style="width: 100%;" frame="box" rules="all">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width:  20%">Level</th>
-                        <th scope="col" style="width:  20%">Cost</th>
-                        <th scope="col" style="width:  60%">Required Materials</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <td colspan="50">
-                            <nav id="mini">
-                                <li><a href="#nav" class="left right"><span class="bullet_top"></span></a></li>
-                            </nav>
-                        </td>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr><td>Lv.1 → Lv.2	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>50,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>50,000 QP</a></td><td>
-                    <a href="item.php#009" title="Proof of Hero
-        英雄の証">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_02.png'), 
-                            url('icons/item/item_009.png'), 
-                            url('icons/frame/bg_02.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.2 → Lv.3	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>100,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>100,000 QP</a></td><td>
-                    <a href="item.php#018" title="Dragon Fang
-        竜の牙">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_02.png'), 
-                            url('icons/item/item_018.png'), 
-                            url('icons/frame/bg_02.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.3 → Lv.4	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>300,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>300,000 QP</a></td><td>
-                    <a href="item.php#008" title="Seed of Yggdrassil
-        世界樹の種">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_03.png'), 
-                            url('icons/item/item_008.png'), 
-                            url('icons/frame/bg_03.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.4 → Lv.5	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>400,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>400,000 QP</a></td><td>
-                    <a href="item.php#021" title="Octuplet Crystals
-        八連双晶">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_03.png'), 
-                            url('icons/item/item_021.png'), 
-                            url('icons/frame/bg_03.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.5 → Lv.6	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>1,000,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>1,000,000 QP</a></td><td>
-                    <a href="item.php#011" title="Void's Dust
-        虚影の塵">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_02.png'), 
-                            url('icons/item/item_011.png'), 
-                            url('icons/frame/bg_02.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.6 → Lv.7	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>1,250,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>1,250,000 QP</a></td><td>
-                    <a href="item.php#016" title="Eternal Gear
-        無間の歯車">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_03.png'), 
-                            url('icons/item/item_016.png'), 
-                            url('icons/frame/bg_03.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.7 → Lv.8	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>2,500,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>2,500,000 QP</a></td><td>
-                    <a href="item.php#007" title="Phoenix Feather
-        鳳凰の羽根">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_03.png'), 
-                            url('icons/item/item_007.png'), 
-                            url('icons/frame/bg_03.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.8 → Lv.9	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>3,000,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>3,000,000 QP</a></td><td>
-                    <a href="item.php#012" title="Dragon's Reverse Scale
-        竜の逆鱗">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_05.png'), 
-                            url('icons/item/item_012.png'), 
-                            url('icons/frame/bg_05.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        5
-                    </div></a></td></tr>
-        <tr><td>Lv.9 → Lv.10	</td><td><a href="item.php#001" class="tooltip"><span class="item" style="background-image: url('icons/item/item_000.png'), url('icons/frame/item_00.png'), url('icons/item/item_001.png'), url('icons/frame/bg_00.png'),url('scripts/img/grandorder/tooltip.png');"><ch1>5,000,000 QP</ch1><br><ch3>Synthesis Resource</ch3><br><ch2>A Quantum Particle.<br>A fluctuation in the spiritron that grants many possibilities.<br>Used as fuel to conduct all sorts of magecraft.</ch2></span>5,000,000 QP</a></td><td>
-                    <a href="item.php#024" title="Crystallized Lore
-        伝承結晶">
-                        <div class="dropitem" style="background-image: 
-                            url('icons/item/item_000.png'), 
-                            url('icons/frame/item_05.png'), 
-                            url('icons/item/item_024.png'), 
-                            url('icons/frame/bg_05.png');
-                            color: white; font-size: 12px;
-                            text-shadow: 1px 1px 1px black, -1px -1px 1px black, -1px 1px 1px black, 1px -1px 1px black;
-                            text-align: right;
-                            padding: 47px 5px 10px 0px;
-                            box-sizing: border-box;
-                            margin: 1px 1px;
-                            width: 64px;
-                            height: 70px;
-                            display: block;">
-                        1
-                    </div></a></td></tr>
-                </tbody>
-            </table>
-        </div><br>
-        
-        <div id="maxbond" class="section" style="width: 910px;"><h2>Maximum Bond Craft Essence</h2></div>
-        
-                            <div class="border" style="width: 895px; margin-top:10px;">
-                                <table id="rounded-corner" class="nohover" style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th style="width:  100%;">Craft Essence</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="50">
-                                            <nav id="mini">
-                                                <li><a href="#nav" class="left right"><span class="bullet_top"></span></a></li>
-                                            </nav>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                                <tbody><tr style="height: 60px;"><td>None</td></tr></tbody>
-                                </table>
-                            </div>
-        <nav id="top" style="width: 900px;">
-            <nav id="mini2" style="width: 900px; text-align: center; margin-left: 5px; margin-top: -20px;">
-                <li><a href="{{character_info.collectionNo}}-1">« Previous</a></li>
-                <li style="margin: 0px 300px;"><a href="">Return</a></li>
-                <li><a href="{{character_info.collectionNo}}+1">Next »</a></li>
-            </nav>
-        </nav><br>
-        
-        
-        </div>
-<footer>
-  {% include "static/webs/footer.html" %}
-  </footer>
+        {% endfor %}        
+    </div>
+    <footer>
+        {% include "static/webs/footer.html" %}
+    </footer>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     

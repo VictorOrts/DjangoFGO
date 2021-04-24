@@ -49,7 +49,7 @@ def oneturn():
 
 def noble_phantasm():
     print("Prepara noble phantasm")
-    skillUse()
+    #skillUse()
     print("Usa noble phantasm")
     pyautogui.PAUSE = 5
     pyautogui.moveTo(1581, 843)
@@ -87,22 +87,27 @@ def click_to_next_game():
         pyautogui.click(button='left')
         pyautogui.PAUSE = 3
         print("Next Game")
-        pyautogui.PAUSE = 3
-        pyautogui.moveTo(1541, 930)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 5
-        print("Repeat Game")
-        pyautogui.PAUSE = 5
-        pyautogui.moveTo(1230, 800)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 12
-        no_stamina()
+        if pyautogui.locateOnScreen('next.png',confidence=0.8):
+            x,y = pyautogui.locateCenterOnScreen('next.png',confidence=0.8)
+            pyautogui.PAUSE = 3
+            pyautogui.moveTo(x, y)
+            pyautogui.PAUSE = 3
+            pyautogui.click(button='left')
+            pyautogui.PAUSE = 5
+            print("Repeat Game")
+            pyautogui.PAUSE = 5
+        if pyautogui.locateOnScreen('repeat.png',confidence=0.8):
+            x,y = pyautogui.locateCenterOnScreen('repeat.png',confidence=0.8)
+            pyautogui.moveTo(x, y)
+            pyautogui.PAUSE = 3
+            pyautogui.click(button='left')
+            pyautogui.PAUSE = 12
+            no_stamina()
 def no_stamina():
-    if checkpixel(688,515,255,254,251):
+    if  pyautogui.locateOnScreen('goldenapple.png',confidence=0.8):
         pyautogui.PAUSE = 2
-        pyautogui.moveTo(688, 515)
+        x,y = pyautogui.locateCenterOnScreen('goldenapple.png',confidence=0.8)
+        pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 2
         pyautogui.click(button='left')
         pyautogui.PAUSE = 12
@@ -128,15 +133,23 @@ def no_stamina():
 try:
     while True:
         pyautogui.PAUSE = 4
-        if checkpixel(281,237,215,100,100):
-            noble_phantasm()
-        elif checkpixel(282,237,199,185,132):
-            print("Revisando")
+        if pyautogui.locateOnScreen('attack.png',confidence=0.9):
+            #noble_phantasm()
+            print("Attack Select")
         elif checkpixel(1577,807,2,206,242):
             oneturn()
-        elif checkpixel(366,347,232,184,32):
-            click_to_next_game()
+        elif pyautogui.locateOnScreen('servantbond.png',confidence=0.8):
+            #click_to_next_game()
+            print("Servant Bond")
             repeat_game+=1
+        elif pyautogui.locateOnScreen('expgained.png',confidence=0.5):
+            #click_to_next_game()
+            print("Exp Gained")
+            pyautogui.PAUSE = 3
+            pyautogui.moveTo(1000, 885)
+            pyautogui.PAUSE = 3
+            pyautogui.click(button='left')
+            pyautogui.PAUSE = 3
                 
         
 except KeyboardInterrupt:

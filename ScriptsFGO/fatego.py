@@ -21,35 +21,36 @@ def checkpixel(mouseX,mouseY,r ,g ,b):
         return False
 
 def oneturn():
-    if checkpixel(1577,807,2,206,242):
-        pyautogui.PAUSE = 4
-        pyautogui.moveTo(1581, 843)
-        pyautogui.PAUSE = 1
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 1.5
-        pyautogui.moveTo(1600, 727)
-        pyautogui.PAUSE = 1
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 1
-        pyautogui.moveTo(1300, 727)
-        pyautogui.PAUSE = 1
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 1
-        pyautogui.moveTo(1000, 727)
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 1
-        pyautogui.moveTo(700, 727)
-        pyautogui.PAUSE = 1
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 1
-        pyautogui.moveTo(400, 727)
-        pyautogui.PAUSE = 1
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 16
+    print("Turno !")
+    pyautogui.PAUSE = 4
+    pyautogui.moveTo(1581, 843)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 1.5
+    pyautogui.moveTo(1600, 727)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 1
+    pyautogui.moveTo(1300, 727)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 1
+    pyautogui.moveTo(1000, 727)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 1
+    pyautogui.moveTo(700, 727)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 1
+    pyautogui.moveTo(400, 727)
+    pyautogui.PAUSE = 1
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 16
 
 def noble_phantasm():
     print("Prepara noble phantasm")
-    skillUse()
+    #skillUse()
     print("Usa noble phantasm")
     pyautogui.PAUSE = 5
     pyautogui.moveTo(1581, 843)
@@ -71,44 +72,45 @@ def noble_phantasm():
     pyautogui.moveTo(1300, 727)
     pyautogui.PAUSE = 2
     pyautogui.click(button='left')
+    pyautogui.PAUSE = 2
+    pyautogui.moveTo(1000, 727)
+    pyautogui.PAUSE = 2
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = 2
     time.sleep(22)
 
 def click_to_next_game():
     #Check gold letter Servant Bond
-    if checkpixel(952,748,1,4,0):
-        print("Click to next game ")
-        pyautogui.PAUSE = 10
-        pyautogui.moveTo(1000, 885)
+    if pyautogui.locateOnScreen('next.png',confidence=0.8):
+        x,y = pyautogui.locateCenterOnScreen('next.png',confidence=0.8)
+        pyautogui.PAUSE = 3
+        pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 3
         pyautogui.click(button='left')
         pyautogui.PAUSE = 3
-        pyautogui.moveTo(1000, 885)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 3
-        print("Next Game")
-        pyautogui.PAUSE = 3
-        pyautogui.moveTo(1541, 930)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 5
         print("Repeat Game")
-        pyautogui.PAUSE = 5
-        pyautogui.moveTo(1230, 800)
+        pyautogui.PAUSE = 3
+    if pyautogui.locateOnScreen('repeat.png',confidence=0.8):
+        x,y = pyautogui.locateCenterOnScreen('repeat.png',confidence=0.8)
+        pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 3
         pyautogui.click(button='left')
         pyautogui.PAUSE = 12
         no_stamina()
+
 def no_stamina():
-    if checkpixel(688,515,255,254,251):
+    if  pyautogui.locateOnScreen('goldenapple.png',confidence=0.8):
         pyautogui.PAUSE = 2
-        pyautogui.moveTo(688, 515)
+        x,y = pyautogui.locateCenterOnScreen('goldenapple.png',confidence=0.8)
+        pyautogui.PAUSE = 2
+        pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 2
         pyautogui.click(button='left')
-        pyautogui.PAUSE = 12
+        pyautogui.PAUSE = 10
+        x,y = pyautogui.locateCenterOnScreen('ok.png',confidence=0.8)
         pyautogui.PAUSE = 5
-        pyautogui.moveTo(1230, 800)
-        pyautogui.PAUSE = 3
+        pyautogui.moveTo(x, y)
+        pyautogui.PAUSE = 5
         pyautogui.click(button='left')
         pyautogui.PAUSE = 12
         print("Pick Servant")
@@ -128,15 +130,36 @@ def no_stamina():
 try:
     while True:
         pyautogui.PAUSE = 4
-        if checkpixel(281,237,215,100,100):
-            noble_phantasm()
-        elif checkpixel(282,237,199,185,132):
-            print("Revisando")
-        elif checkpixel(1577,807,2,206,242):
-            oneturn()
-        elif checkpixel(366,347,232,184,32):
-            click_to_next_game()
+        if pyautogui.locateOnScreen('attack.png',confidence=0.9):
+            #noble_phantasm()
+            print("Attack Select")
+            if pyautogui.locateOnScreen('round3.png',confidence=0.9):
+                noble_phantasm()
+            elif pyautogui.locateOnScreen('attack.png',confidence=0.9):
+                oneturn()
+            
+        elif pyautogui.locateOnScreen('servantbond.png',confidence=0.8):
+            #click_to_next_game()
+            print("Servant Bond")
+            x,y = pyautogui.locateCenterOnScreen('servantbond.png',confidence=0.8)
+            pyautogui.PAUSE = 5
+            pyautogui.moveTo(x, y)
+            pyautogui.PAUSE = 5
+            pyautogui.click(button='left')
+            pyautogui.PAUSE = 5
             repeat_game+=1
+        elif pyautogui.locateOnScreen('expgained.png',confidence=0.7):
+            #click_to_next_game()
+            print("Exp Gained")
+            x,y = pyautogui.locateCenterOnScreen('expgained.png',confidence=0.7)
+            pyautogui.PAUSE = 3
+            pyautogui.moveTo(x, y)
+            pyautogui.PAUSE = 3
+            pyautogui.click(button='left')
+            pyautogui.PAUSE = 3
+        elif pyautogui.locateOnScreen('itemsdropped.png',confidence=0.7):
+            print("Items dropped")
+            click_to_next_game()
                 
         
 except KeyboardInterrupt:

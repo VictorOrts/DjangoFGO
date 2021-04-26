@@ -1,6 +1,6 @@
 import pyautogui, sys, time
 repeat_game = 0
-match_value = 0.7
+match_value = 0.8
 def skillUse():
     print("Usa skill")
     pyautogui.PAUSE = 6

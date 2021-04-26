@@ -1,6 +1,6 @@
 import pyautogui, sys, time
 repeat_game = 0
-
+match_value = 0.7
 def skillUse():
     print("Usa skill")
     pyautogui.PAUSE = 6
@@ -81,8 +81,8 @@ def noble_phantasm():
 
 def click_to_next_game():
     #Check gold letter Servant Bond
-    if pyautogui.locateOnScreen('next.png',confidence=0.8):
-        x,y = pyautogui.locateCenterOnScreen('next.png',confidence=0.8)
+    if pyautogui.locateOnScreen('next.png',confidence=match_value):
+        x,y = pyautogui.locateCenterOnScreen('next.png',confidence=match_value)
         pyautogui.PAUSE = 3
         pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 3
@@ -90,8 +90,8 @@ def click_to_next_game():
         pyautogui.PAUSE = 3
         print("Repeat Game")
         pyautogui.PAUSE = 3
-    if pyautogui.locateOnScreen('repeat.png',confidence=0.8):
-        x,y = pyautogui.locateCenterOnScreen('repeat.png',confidence=0.8)
+    if pyautogui.locateOnScreen('repeat.png',confidence=match_value):
+        x,y = pyautogui.locateCenterOnScreen('repeat.png',confidence=match_value)
         pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 3
         pyautogui.click(button='left')
@@ -99,15 +99,15 @@ def click_to_next_game():
         no_stamina()
 
 def no_stamina():
-    if  pyautogui.locateOnScreen('goldenapple.png',confidence=0.8):
+    if  pyautogui.locateOnScreen('goldenapple.png',confidence=match_value):
         pyautogui.PAUSE = 2
-        x,y = pyautogui.locateCenterOnScreen('goldenapple.png',confidence=0.8)
+        x,y = pyautogui.locateCenterOnScreen('goldenapple.png',confidence=match_value)
         pyautogui.PAUSE = 2
         pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 2
         pyautogui.click(button='left')
         pyautogui.PAUSE = 10
-        x,y = pyautogui.locateCenterOnScreen('ok.png',confidence=0.8)
+        x,y = pyautogui.locateCenterOnScreen('ok.png',confidence=match_value)
         pyautogui.PAUSE = 5
         pyautogui.moveTo(x, y)
         pyautogui.PAUSE = 5
@@ -130,34 +130,34 @@ def no_stamina():
 try:
     while True:
         pyautogui.PAUSE = 4
-        if pyautogui.locateOnScreen('attack.png',confidence=0.9):
+        if pyautogui.locateOnScreen('attack.png',confidence=match_value):
             #noble_phantasm()
             print("Attack Select")
-            if pyautogui.locateOnScreen('round3.png',confidence=0.9):
+            if pyautogui.locateOnScreen('round3.png',confidence=match_value):
                 noble_phantasm()
-            elif pyautogui.locateOnScreen('attack.png',confidence=0.9):
+            elif pyautogui.locateOnScreen('attack.png',confidence=match_value):
                 oneturn()
             
-        elif pyautogui.locateOnScreen('servantbond.png',confidence=0.8):
+        elif pyautogui.locateOnScreen('servantbond.png',confidence=match_value):
             #click_to_next_game()
             print("Servant Bond")
-            x,y = pyautogui.locateCenterOnScreen('servantbond.png',confidence=0.8)
+            x,y = pyautogui.locateCenterOnScreen('servantbond.png',confidence=match_value)
             pyautogui.PAUSE = 5
             pyautogui.moveTo(x, y)
             pyautogui.PAUSE = 5
             pyautogui.click(button='left')
             pyautogui.PAUSE = 5
             repeat_game+=1
-        elif pyautogui.locateOnScreen('expgained.png',confidence=0.7):
+        elif pyautogui.locateOnScreen('expgained.png',confidence=match_value):
             #click_to_next_game()
             print("Exp Gained")
-            x,y = pyautogui.locateCenterOnScreen('expgained.png',confidence=0.7)
+            x,y = pyautogui.locateCenterOnScreen('expgained.png',confidence=match_value)
             pyautogui.PAUSE = 3
             pyautogui.moveTo(x, y)
             pyautogui.PAUSE = 3
             pyautogui.click(button='left')
             pyautogui.PAUSE = 3
-        elif pyautogui.locateOnScreen('itemsdropped.png',confidence=0.7):
+        elif pyautogui.locateOnScreen('itemsdropped.png',confidence=match_value):
             print("Items dropped")
             click_to_next_game()
                 

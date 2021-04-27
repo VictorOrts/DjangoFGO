@@ -133,7 +133,7 @@ try:
         if pyautogui.locateOnScreen('attack.png',confidence=match_value):
             #noble_phantasm()
             print("Attack Select")
-            if pyautogui.locateOnScreen('round3.png',confidence=match_value):
+            if pyautogui.locateOnScreen('round3.png',confidence=match_value) and pyautogui.locateOnScreen('danger.png',confidence=match_value):
                 noble_phantasm()
             elif pyautogui.locateOnScreen('attack.png',confidence=match_value):
                 oneturn()

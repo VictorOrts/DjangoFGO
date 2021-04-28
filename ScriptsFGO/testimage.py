@@ -1,14 +1,12 @@
-import pyautogui, sys, time
+from dearpygui.core import *
 
-print('Press Ctrl-C to quit.')
-try:
-    time.sleep(3)
-    checkbattle = pyautogui.locateOnScreen('ok.png',confidence=0.7)
-    if pyautogui.locateOnScreen('ok.png',confidence=0.7):
-        print(checkbattle)
-    else:
-        print("Es none")
-    print(pyautogui.locateCenterOnScreen('ok.png',confidence=0.7))
+def do_something(sender, data):
+    log_info('This did something', logger='MyLog')
 
-except KeyboardInterrupt:
-    print('\n')
+def call_async_function(sender, data):
+    do_something()
+
+add_button('MyButton', callback=call_async_function)
+add_logger('MyLog')
+
+start_dearpygui()

@@ -1,5 +1,8 @@
 import pyautogui, sys, time
+import os
 
+
+os.system(r"scrcpy\scrcpy.exe")
 print('Press Ctrl-C to quit.')
 try:
     while True:
@@ -15,7 +18,7 @@ try:
             print('\b'*len(tmp), flush=True)
             time.sleep(1)
         #else:
-            
+    
             #print("No coincide")
 except KeyboardInterrupt:
     print('\n')

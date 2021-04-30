@@ -1,4 +1,4 @@
-import pyautogui, sys, time
+import pyautogui, sys, time, os
 repeat_game = 0
 match_value = 0.8
 def skillUse():
@@ -127,7 +127,9 @@ def no_stamina():
         pyautogui.click(button='left')
         pyautogui.PAUSE = 10
 
+#os.system(r"scrcpy\scrcpy.exe")
 try:
+    
     while True:
         pyautogui.PAUSE = 4
         if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):

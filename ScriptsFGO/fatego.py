@@ -127,8 +127,9 @@ def no_stamina():
         pyautogui.click(button='left')
         pyautogui.PAUSE = 10
 
+#os.system(r"scrcpy\scrcpy.exe")
 try:
-    os.system(r"scrcpy\scrcpy.exe")
+    
     while True:
         pyautogui.PAUSE = 4
         if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):

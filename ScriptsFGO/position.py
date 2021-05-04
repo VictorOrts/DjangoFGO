@@ -1,22 +1,21 @@
 import pyautogui, sys, time
 import os
-
-
-os.system(r"scrcpy\scrcpy.exe")
-print('Press Ctrl-C to quit.')
+SHORT_TIME_WAIT  = 3
+MEDIUM_TIME_WAIT = 6
+def mouse_cycle(x,y):
+    pyautogui.PAUSE = SHORT_TIME_WAIT
+    pyautogui.moveTo(x, y)
+    pyautogui.PAUSE = SHORT_TIME_WAIT
+    pyautogui.click(button='left')
+    pyautogui.PAUSE = MEDIUM_TIME_WAIT
 try:
-    while True:
-        x, y = pyautogui.position()
-        positionStr = '- X: ' + str(x).rjust(4) + ' Y: ' + str(y).rjust(4)
-        pix = pyautogui.pixel(x,y)
-        tmp = str(pix)+str(positionStr)
-        print(tmp)
-        print('\b'*len(tmp), flush=True)
-        time.sleep(1)
-        if pyautogui.pixelMatchesColor(281, 237, (214, 100, 100),tolerance=10):
-            print(tmp)
-            print('\b'*len(tmp), flush=True)
-            time.sleep(1)
+    #while True:
+    pyautogui.PAUSE = 2 
+    for listPos in pyautogui.locateAllOnScreen('img/atk_up.png',confidence=0.6):
+        pyautogui.PAUSE = 2
+        calculatemidx =listPos.left +(listPos.width*0.5)
+        calculatemidy =listPos.top +(listPos.width*0.5)
+        mouse_cycle(calculatemidx,calculatemidy)
         #else:
     
             #print("No coincide")

@@ -9,7 +9,7 @@ SHORT_TIME_WAIT = 3
 MEDIUM_TIME_WAIT = 6
 LONG_TIME_WAIT = 10
 
-def skillUse():
+def skillUse(image):
     """
     x   y
     325 805 - 435 805 - 545 805
@@ -18,6 +18,12 @@ def skillUse():
     x    y
     1075 805 - 1185 805 - 1295 805
     """
+    for listPos in pyautogui.locateAllOnScreen(image,confidence=match_value):
+        pyautogui.PAUSE = 2
+        calculatemidx =listPos.left +(listPos.width*0.5)
+        calculatemidy =listPos.top +(listPos.width*0.5)
+        mouse_cycle(calculatemidx,calculatemidy)
+
     mouse_cycle(435, 805)
     mouse_cycle(545, 805)
 
@@ -29,7 +35,7 @@ def checkpixel(mouseX,mouseY,r ,g ,b):
         return False
 
 def oneturn():
-    #Press Attack
+    #Press Button Attack
     mouse_cycle(1581, 843)
     #Press x x x x X
     mouse_cycle_move_click(1600, 727,1)
@@ -43,6 +49,13 @@ def oneturn():
     mouse_cycle_move_click(400, 727,1)
 
 def noble_phantasm():
+    #Use Skill check buff attack
+    #skillUse('img/atk_up.png')
+    #Use Skill check buff attack
+    #skillUse('img/quickup.png')
+    #Use Skill check buff attack
+    #skillUse('img/burst.png')
+    #Press Button Attack
     mouse_cycle(1581, 843)
     #Press NP X x x 
     mouse_cycle_move_click(720, 380,1)

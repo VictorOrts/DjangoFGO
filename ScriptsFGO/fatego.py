@@ -1,18 +1,26 @@
 import pyautogui, sys, time, os
+from datetime import datetime
+
+start_date= None
+end_date = None
 repeat_game = 0
 match_value = 0.8
+SHORT_TIME_WAIT = 3
+MEDIUM_TIME_WAIT = 6
+LONG_TIME_WAIT = 10
+
 def skillUse():
-    print("Usa skill")
-    pyautogui.PAUSE = 6
-    pyautogui.moveTo(435, 805)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 4
-    pyautogui.PAUSE = 4
-    pyautogui.moveTo(545, 805)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 4
+    """
+    x   y
+    325 805 - 435 805 - 545 805
+    x   y
+    700 805 - 810 805 - 920 805
+    x    y
+    1075 805 - 1185 805 - 1295 805
+    """
+    mouse_cycle(435, 805)
+    mouse_cycle(545, 805)
+
 
 def checkpixel(mouseX,mouseY,r ,g ,b):
     if pyautogui.pixelMatchesColor(mouseX, mouseY, (r, g, b),tolerance=10):
@@ -21,199 +29,126 @@ def checkpixel(mouseX,mouseY,r ,g ,b):
         return False
 
 def oneturn():
-    print("Turno !")
-    pyautogui.PAUSE = 4
-    pyautogui.moveTo(1581, 843)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 1.5
-    pyautogui.moveTo(1600, 727)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 1
-    pyautogui.moveTo(1300, 727)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 1
-    pyautogui.moveTo(1000, 727)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 1
-    pyautogui.moveTo(700, 727)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 1
-    pyautogui.moveTo(400, 727)
-    pyautogui.PAUSE = 1
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 16
+    #Press Attack
+    mouse_cycle(1581, 843)
+    #Press x x x x X
+    mouse_cycle_move_click(1600, 727,1)
+    #Press x x x X x
+    mouse_cycle_move_click(1300, 727,1)
+    #Press x x X x x
+    mouse_cycle_move_click(1000, 727,1)
+    #Press x X x x x
+    mouse_cycle_move_click(700, 727,1)
+    #Press X x x x x
+    mouse_cycle_move_click(400, 727,1)
 
 def noble_phantasm():
-    print("Prepara noble phantasm")
-    #skillUse()
-    print("Usa noble phantasm")
-    pyautogui.PAUSE = 5
-    pyautogui.moveTo(1581, 843)
-    pyautogui.PAUSE = 2
+    mouse_cycle(1581, 843)
+    #Press NP X x x 
+    mouse_cycle_move_click(720, 380,1)
+    #Press NP x X x 
+    mouse_cycle_move_click(1000, 380,1)
+    #Press NP x x X 
+    mouse_cycle_move_click(1280, 380,1)
+    #Press x x x x X
+    mouse_cycle_move_click(1600, 727,1)
+    #Press x x x X x
+    mouse_cycle_move_click(1300, 727,1)
+    #Press x x X x x
+    mouse_cycle_move_click(1000, 727,1)
+    pyautogui.PAUSE = LONG_TIME_WAIT
+
+def mouse_cycle(x,y):
+    pyautogui.PAUSE = SHORT_TIME_WAIT
+    pyautogui.moveTo(x, y)
+    pyautogui.PAUSE = SHORT_TIME_WAIT
     pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    pyautogui.moveTo(720, 380)
-    pyautogui.PAUSE = 2
+    pyautogui.PAUSE = MEDIUM_TIME_WAIT
+
+def mouse_cycle_move_click(x,y,time):
+    pyautogui.PAUSE = time
+    pyautogui.moveTo(x, y)
+    pyautogui.PAUSE = time
     pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    pyautogui.moveTo(1000, 380)
-    pyautogui.PAUSE = 2
+    pyautogui.PAUSE = time
+
+def mouse_cycle_short_long(x,y):
+    pyautogui.PAUSE = SHORT_TIME_WAIT
+    pyautogui.moveTo(x, y)
+    pyautogui.PAUSE = SHORT_TIME_WAIT
     pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    pyautogui.moveTo(1600, 727)
-    pyautogui.PAUSE = 2
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    pyautogui.moveTo(1300, 727)
-    pyautogui.PAUSE = 2
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    pyautogui.moveTo(1000, 727)
-    pyautogui.PAUSE = 2
-    pyautogui.click(button='left')
-    pyautogui.PAUSE = 2
-    time.sleep(22)
+    pyautogui.PAUSE = LONG_TIME_WAIT
 
 def click_to_next_game():
     #Check gold letter Servant Bond
     if pyautogui.locateOnScreen('img/next.png',confidence=match_value):
         x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
-        pyautogui.PAUSE = 3
-        pyautogui.moveTo(x, y)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 3
-        print("Repeat Game")
-        pyautogui.PAUSE = 3
+        mouse_cycle(x,y)
     if pyautogui.locateOnScreen('img/repeat.png',confidence=match_value):
         x,y = pyautogui.locateCenterOnScreen('img/repeat.png',confidence=match_value)
-        pyautogui.moveTo(x, y)
-        pyautogui.PAUSE = 3
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 12
+        mouse_cycle(x,y)
         no_stamina()
 
 def no_stamina():
     if  pyautogui.locateOnScreen('img/goldenapple.png',confidence=match_value):
         pyautogui.PAUSE = 2
         x,y = pyautogui.locateCenterOnScreen('img/goldenapple.png',confidence=match_value)
-        pyautogui.PAUSE = 2
-        pyautogui.moveTo(x, y)
-        pyautogui.PAUSE = 2
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 10
+        mouse_cycle(x,y)
         x,y = pyautogui.locateCenterOnScreen('img/ok.png',confidence=match_value)
-        pyautogui.PAUSE = 5
-        pyautogui.moveTo(x, y)
-        pyautogui.PAUSE = 5
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 12
+        mouse_cycle_short_long(x,y)
         print("Pick Servant")
-        pyautogui.PAUSE = 3
-        pyautogui.moveTo(960, 433)
-        pyautogui.PAUSE = 2
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 10
+        mouse_cycle_short_long(960,433)
     else:
         print("Pick Servant")
-        pyautogui.PAUSE = 4
-        pyautogui.moveTo(960, 433)
-        pyautogui.PAUSE = 4
-        pyautogui.click(button='left')
-        pyautogui.PAUSE = 10
+        mouse_cycle_short_long(960,433)
 
 #os.system(r"scrcpy\scrcpy.exe")
+def current_print(info):
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    print(current_time, info )
+    return current_time
+
 try:
+    start_date = current_print("Starting Bot")
     
     while True:
-        pyautogui.PAUSE = 4
+        pyautogui.PAUSE = 2
         if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
             #noble_phantasm()
-            print("Attack Select")
+            #current_print("Check Attack Image")
             if pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/danger.png',confidence=match_value):
+                current_print("Noble Phantasm")
                 noble_phantasm()
             elif pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
+                current_print("Turno")
                 oneturn()
             
         elif pyautogui.locateOnScreen('img/servantbond.png',confidence=match_value):
             #click_to_next_game()
-            print("Servant Bond")
+            current_print("Check Servant Bond Image")
             x,y = pyautogui.locateCenterOnScreen('img/servantbond.png',confidence=match_value)
-            pyautogui.PAUSE = 5
-            pyautogui.moveTo(x, y)
-            pyautogui.PAUSE = 5
-            pyautogui.click(button='left')
-            pyautogui.PAUSE = 5
+            mouse_cycle(x,y)
             repeat_game+=1
         elif pyautogui.locateOnScreen('img/expgained.png',confidence=match_value):
             #click_to_next_game()
-            print("Exp Gained")
+            current_print("Check Exp Gained Image")
             x,y = pyautogui.locateCenterOnScreen('img/expgained.png',confidence=match_value)
-            pyautogui.PAUSE = 3
-            pyautogui.moveTo(x, y)
-            pyautogui.PAUSE = 3
-            pyautogui.click(button='left')
-            pyautogui.PAUSE = 3
+            mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/itemsdropped.png',confidence=match_value):
-            print("Items dropped")
+            current_print("Check Items Dropped Image")
             click_to_next_game()
                 
         
 except KeyboardInterrupt:
-    print("Numero de partidas "+str(repeat_game))
+    current_print("Empezo el bot -> "+str(start_date))
+    current_print("Numero de partidas "+str(repeat_game))
     print('\n') 
 
 """
-pyautogui.moveTo(1581, 843)
-pyautogui.click(button='left')
-pyautogui.PAUSE = 1.5
-pyautogui.moveTo(1600, 727)
-pyautogui.PAUSE = 1
-pyautogui.moveTo(1300, 727)
-pyautogui.PAUSE = 1
-pyautogui.moveTo(1000, 727)
-pyautogui.PAUSE = 1
-pyautogui.moveTo(700, 727)
-pyautogui.PAUSE = 1
-pyautogui.moveTo(400, 727)
-pyautogui.PAUSE = 1
+
 
 skills
-x   y
-325 805
-435 805
-545 805
-x   y
-700 805
-810 805
-920 805
-x    y
-1075 805
-1185 805
-1295 805
-
-noble phantasm
- x    y
-720  380
-1000 380
-1280 380
-Check noble phantasm bar
-
-end game 
-1000 885 x2
-1541 930 next
-1230 795 repeat
-960 433 clicl servant
-wait load game
-255 254 251 688 515 golden fruit
-216 216 126 1179 197 next
-65 40 170 550 468 servant pick
-for x in range(6):
 
 
 """

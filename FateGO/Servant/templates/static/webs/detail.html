@@ -168,6 +168,9 @@
                 </div>
                 <div class="col">
                     <div class="">{{skills.detail}}</div>
+                    {% for a in skills.functions %}
+                        <div class="">{{a.svals.Value }}</div>       
+                    {% endfor %} 
                 </div>
             </div>
         </div>

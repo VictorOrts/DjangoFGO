@@ -62,6 +62,12 @@ def informationCharacter(request,collectionNo):
    #return redirect(url)
    response = requests.get(url)
    data = response.json()
+   
+   url = 'https://api.atlasacademy.io/nice/NA/equip/'+str(data['bondEquip'])+'?lang=en'
+   response = requests.get(url)
+   craftessence = response.json()
+
+
    return render (request, 'static/webs/detail.html', { "character_info": 
-    data} )
+    data,"craft_essence":craftessence} )
 

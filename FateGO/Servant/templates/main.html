@@ -39,7 +39,7 @@
             <p class="card-text" style="text-transform: capitalize;">{{ servant.attribute }}</p>
             <p class="card-text"> Atk : {{ servant.atkMax }}</p>
             <p class="card-text">Hp : {{ servant.hpMax }}</p>
-            <p class="card-text">{{ servant.rarity }}★</p>
+            <p class="card-text"><img class="star{{servant.rarity}}"></p>
           </div>
         <div class="card-footer text-center">
           <img class="{{ servant.className }}" >

@@ -10,90 +10,49 @@
     <link rel="stylesheet" href="{% static 'css/fatego.css' %}">
     <script  src="{% static 'js/main.js' %}"></script>
   </head>
-  <body>
-
+  <body onload="putFirstImage()">
+   <div class="container">
     <div id="content" class="text-center">                
-        <h1>Servant Profile</h1>
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Status</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Interlude</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ascension</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Skill Upgrade</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Max Bond CE</a>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-
-        
-        <div id="status" class="section" style="width: 910px;"><h2>Status</h2></div>
+        <h1 class="fGo">Fate Grand Order</h1>        
+        <h2>{{character_info.name}}</h2>
+        <div class="text-center">
+            <img id="image" src="" width="220px" height="376px">
+            <div>
             {% for key, value in character_info.extraAssets.charaGraph.ascension.items %}
-            <a class="fancybox" rel="servant" href="" title="Default">
-                <div style="
-                    width: 220px; 
-                    height: 376px; 
-                    float: left; 
-                    margin: 10px 0px 10px 5px; 
-                    background-image: url({{value}}); 
-                    background-size: 100% 100%;
-                    background-position:  0% 0%;
-                    background-repeat: no-repeat">
-                </div>
-            </a>
-
+                <button id="stage{{key}}" class="btn btn-primary btn-sm" onclick="ChangeImage('{{value}}' )"> Stage Ascension {{key}} </button>
+                
             {% endfor %}
-        
-        <a href="#status">
-        <div class="border" style="width: 895px; margin-top:0px;">
+            </div>
+            
+        </div>
+        <h1 class="fGo">Basic Information</h1>
+        <div class="border">
         <table id="table-primary" class="nohover" style="width: 100%;">
-            <thead>
-                <tr>
-                    <th colspan="50" style="width: 100%;">Status</th>
-                </tr>
-            </thead>
             <tbody>
                 
                     <tr>
                         <td class="profile">Name
-                        </td><td class="desc" colspan="3"><spanh>{{character_info.name}}</spanh>
+                        </td><td class="text-center bold_text" colspan="3"><spanh>{{character_info.name}}</spanh>
                     </td></tr>
                     <tr>
                         <td class="profile">Alias
-                        </td><td class="desc"><a title="Lancelot Jr."><spoiler>{{character_info.ruby}}</spoiler></a>
+                        </td><td class="desc">{{character_info.ruby}}
                         </td><td class="profile">Class
-                        </td><td class="desc">{{character_info.className}}
+                        </td><td class="textFormat">{{character_info.className}}
                     </td></tr>
                     <tr>
                         <td class="profile">ID No.
-                        </td><td class="desc">{{character_info.collectionNo}}
+                        </td><td class="textFormat">{{character_info.collectionNo}}
                         </td><td class="profile">Rarity
-                        </td><td class="rare3 desc">★★★ R
+                        </td><td class="rare3 desc"><img class="star{{character_info.rarity}}">
                     </td></tr>
                     <tr>
                     </tr>
                     <tr>
                         <td class="profile">Cost
-                        </td><td class="desc">0
-                        </td><td class="profile">Max LV
-                        </td><td class="desc">{{character_info.lvMax}}
+                        </td><td class="textFormat">0
+                        </td><td class="profile">Max LVL
+                        </td><td class="textFormat">{{character_info.lvMax}}
                     </td></tr>
                     <tr>
                     </tr>
@@ -102,102 +61,124 @@
                         </td><td class="desc" style="width: 35%">{{character_info.atkBase}}
                         </td><td class="profile">HP Lv.1
                         </td><td class="desc">{{character_info.hpBase}}
-                    </td></tr>
+                        </td>
+                    </tr>
                     <tr>
-                        <td class="profile">ATK Lv.70
-                        </td><td class="desc">6,791　(8,791)
-                        </td><td class="profile">HP Lv.70
-                        </td><td class="desc">10,302　(12,302)
-                    </td></tr>
-                    <tr>
-                        <td class="profile" style="background-image: url('icons/item/item_006.png'); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">ATK Lv.90
-                        </td><td class="desc">{{character_info.atkMax　}}(11,653)
-                        </td><td class="profile" style="background-image: url('icons/item/item_006.png'); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">HP Lv.90
-                        </td><td class="desc">{{character_info.hpMax　}}　(16,248)
-                    </td></tr>
-                    <tr>
-                        <td class="profile" style="background-image: url('icons/item/item_006.png'); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">ATK Lv.100
-                        </td><td class="desc">10,575　(12,575)
-                        </td><td class="profile" style="background-image: url('icons/item/item_006.png'); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">HP Lv.100
-                        </td><td class="desc">15,619　(17,619)
-                    </td></tr>	</tbody>
+                        <td class="profile" style="background-image: url(''); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">ATK Lv.90
+                        </td><td class="desc">{{character_info.atkMax　}}
+                        </td><td class="profile" style="background-image: url(''); background-size: 24px 24px; background-position: 95% 50%; background-repeat:  no-repeat;">HP Lv.90
+                        </td><td class="desc">{{character_info.hpMax　}}　
+                        </td>
+                    </tr>
+
+                    </tbody>
         </table>
-        </div></a>
+        </div>
         
-        <a href="#status">
-        <div class="border" style="width: 895px; margin-top:10px;">
-        <table id="rounded-corner" class="nohover status" style="width: 100%;">
+        <h2 class="fGo">Stats</h2>
+        <div class="border">
+        <table class="table table-responsive" >
             <thead>
                 <tr>
-                    <th colspan="50" style="width: 100%;">Hidden Stats</th>
+                    <th scope="col"> </th>
+                    <th scope="col">Attack Distribution</th>
+                    <th scope="col"> </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="width: 100%;">
                 
                     <tr>
-                        <td class="profile"><a href="hidden.php#hidden" target="_blank">NP Gain</a>
-                        </td><td class="desc">Attack: 0.84% ・ Defense: 3.00%
-                        </td><td class="profile"><a href="hidden.php#hidden" target="_blank">Quick Card</a>
-                        </td><td class="desc">2 Hits
-                    </td></tr>
-                    <tr>
-                        <td class="profile"><a href="hidden.php#hidden" target="_blank">Star Weight</a>
-                        </td><td class="desc">99
-                        </td><td class="profile"><a href="hidden.php#hidden" target="_blank">Arts Card</a>
-                        </td><td class="desc">2 Hits
-                    </td></tr>
-                    <tr>
+                        <td class="profile">Quick Card</td>
+                        <td class="desc">{{ character_info.hitsDistribution.quick|length }} Hits</td>
+                        <td class="desc">
+                        
+                        {% for nAttack in character_info.hitsDistribution.quick %}
+                            {{nAttack}}%
+                        {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td class="profile"><a href="hidden.php#hidden" target="_blank">Star Rate</a>
-                        </td><td class="desc">9.90%
-                        </td><td class="profile"><a href="hidden.php#hidden" target="_blank">Buster Card</a>
-                        </td><td class="desc">1 Hits
-                    </td></tr>
-                    <tr>
+                        <td class="profile">Arts Card</td>
+                        <td class="desc">{{ character_info.hitsDistribution.arts|length }} Hits</td>
+                        <td class="desc">
+                        
+                        {% for nAttack in character_info.hitsDistribution.arts %}
+                            {{nAttack}}%
+                        {% endfor %}
+                        </td>
                     </tr>
                     <tr>
-                        <td class="profile"><a href="hidden.php#hidden" target="_blank">Death Rate</a>
-                        </td><td class="desc">24.50%
-                        </td><td class="profile"><a href="hidden.php#hidden" target="_blank">Extra Attack</a>
-                        </td><td class="desc">3 Hits
-                    </td></tr>
+                        <td class="profile">Buster Card</td>
+                        <td class="desc">{{ character_info.hitsDistribution.buster|length }} Hits</td>
+                        <td class="desc">
+                        
+                        {% for nAttack in character_info.hitsDistribution.buster %}
+                            {{nAttack}}%
+                        {% endfor %}
+                        </td>
+                    </tr>
                     <tr>
-                        <td class="profile"><a href="hidden.php#attribute" target="_blank">Attribute</a>
-                        </td><td class="desc">{{character_info.attribute}}
-                        </td><td class="profile"><a href="hidden.php#hidden" target="_blank">Noble Phantasm</a>
-                        </td><td class="desc">0 Hits
-                    </td></tr>		
+                        <td class="profile">Extra Card</td>
+                        <td class="desc">{{ character_info.hitsDistribution.extra|length }} Hits</td>
+                        <td class="desc">
+                        
+                        {% for nAttack in character_info.hitsDistribution.extra %}
+                            {{nAttack}}%
+                        {% endfor %}
+                        </td>
+                    </tr>
                     <tr>
-                        <td class="profile"><a href="hidden.php#traits" target="_blank">Traits</a>
-                        </td><td class="desc" colspan="3">
-                            {% for traits in character_info.traits %}
-                            {{traits.name}}
-                            {% endfor %}
-                    </td></tr>	</tbody>
+                        {% for key,value in craft_essence.extraAssets.faces.equip.items %}
+                            <td class="desc"><img src="{{ value }}" width="100px" height="100px"> </td>
+                        {% endfor %}
+                        <td class="profile">{{craft_essence.name}}
+                        <br>
+                        AtkMax {{craft_essence.atkMax}}
+                        <br>
+                        HpMax {{craft_essence.hpMax}}
+                        </td>
+                        {% for value in craft_essence.skills %}
+                            <td class=""> {{ value.detail }} </td>
+                        {% endfor %}
+                    </tr>	
+                </tbody>
         </table>
-        </div></a>
+        Deck
+        <div>
+            {% for card in character_info.cards %}
+                <span class="">
+                    <img class="{{card}}">
+                </span>
+            {% endfor %}
+            
+        </div>
+            Traits
+            {% for traits in character_info.traits %}
+            <td class="desc">{{traits.name}}</td>
+            {% endfor %}
+        </div>
         
-        <a href="#status">
+        <h2 class="fGo">Skills</h2>
         {% for skills in character_info.skills %}
-        <div class="border" style="width: 895px; margin-top:10px;">
-            <div class="row ">
-                <div class="col-6 col-sm-6"><img src="{{skills.icon}}" width="50px" height="50px"></div>
-                <div class="col-6 col-sm-6">{{skills.name}}</div>
-                
-                <!-- Force next columns to break to new line at md breakpoint and up -->
-                <div class="w-100 d-none d-md-block"></div>
-                <div class="col-6 col-sm-4"> </div>
-                <div class="col-6 col-sm-4">{{skills.detail}}</div>
+        <div class="container px-4">
+            <div class="">{{skills.name}}</div>
+            <div class="row gx-5 bg-light">
+                <div class="col">
+                    <div class=""><img src="{{skills.icon}}" width="50px" height="50px"></div>
+                </div>
+                <div class="col">
+                    <div class="">{{skills.detail}}</div>
+                </div>
             </div>
         </div>
         {% endfor %}        
+    </div>
     </div>
     <footer>
         {% include "static/webs/footer.html" %}
     </footer>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    
+  
   </body>
 </html>

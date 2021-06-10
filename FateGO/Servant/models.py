@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 # "https://api.atlasacademy.io/basic/NA/servant/search?lang=en&name=Kama&className=assassin"
 class Servantch(models.Model):
-    unique_id  =  models.CharField(max_length=8, primary_key=True)
+    id  =  models.AutoField(primary_key=True)
+    unique_id = models.CharField(max_length=5)
     collectionNo = models.CharField(max_length=5)
     name = models.CharField(max_length=30)
     typeS = models.CharField(max_length=30)

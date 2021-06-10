@@ -33,7 +33,8 @@ def Servant(request):
     for i in servant:
         b = 0
         meal_data = Servantch(
-            unique_id  = i['id'],
+            id  = i['id'],
+            unique_id = i['id'],
             collectionNo = i['collectionNo'],
             name = i['name'],
             typeS = i['type'],
@@ -46,8 +47,6 @@ def Servant(request):
             face = i['face']
         )
         # Code to avoid className beast not servants
-        positionbeast = meal_data.className.find("beast")
-        meal_data.save() if positionbeast < b else meal_data.delete()
         namefilter = meal_data.name.find("servantfilter")
         meal_data.save() if namefilter < b else meal_data.delete()
         all_meals.append(meal_data)

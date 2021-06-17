@@ -15,36 +15,44 @@
 
 
 
-{% block content %}
+  {% block content %}
 
 
-{% include "static/webs/bar.html" %}
-  
-{% endblock %}
+  {% include "static/webs/bar.html" %}
+    
+  {% endblock %}
+<div class="container">
 <div class="row">
+    <div class="row">
+      {{ request.path }}
+    </div>
     {% for ce in craft_essence %}
-    <div class="col-sm-2">
-      <div class="card justify-content-center" style="width: 275px;">
+    <div class="col-sm-3">
+      <div class="card justify-content-center" style="width: 275px;height: 850px;">
         <div class="card-header  text-center">
           <a href="">
           <p class="card-title bold_text">{{ ce.name }}</p>
           </a>
         </div>
-          <img class="card-img-top" src="{{ ce.face }}" alt="Card image cap">
+        {% for key, value in ce.extraAssets.charaGraph.equip.items %}
+          <img class="card-img-top" src="{{ value }}" alt="{{ ce.name }}">
+        {% endfor %}
           <div class="card-body text-center">
-            <p class="card-text" style="text-transform: capitalize;">{{ ce.flag }}</p>
             <p class="card-text"> AtkMax : {{ ce.atkMax }}</p>
             <p class="card-text">HpMax : {{ ce.hpMax }}</p>
-            <p class="card-text"><img class="star{{ce.rarity}}"></p>
+            <p class="card-text"> {{ ce.skills.0.detail }}</p>
+
           </div>
         <div class="card-footer text-center">
-          <img class="{{ servant.className }}" >
+          <p class="card-text">LvLMax : {{ ce.lvMax }}</p>
+            <p class="card-text"><img class="star{{ce.rarity}}"></p>
         </div>
       </div>
       <br><br><br>
     </div>
     {% endfor %}
   
+</div>
 </div>
 <footer>
   {% include "static/webs/footer.html" %}

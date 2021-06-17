@@ -72,7 +72,7 @@ def informationCharacter(request,collectionNo):
 
 #Craft Essence
 def craftEssence(request):
-   url = 'https://api.atlasacademy.io/export/NA/basic_equip.json'
+   url = 'https://api.atlasacademy.io/export/NA/nice_equip.json'
    response = requests.get(url)
    craftessence = response.json()
    return render (request, 'static/webs/ce.html', { "craft_essence": craftessence} )

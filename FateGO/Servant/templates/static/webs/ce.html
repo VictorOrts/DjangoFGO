@@ -22,20 +22,20 @@
   
 {% endblock %}
 <div class="row">
-    {% for servant in all_meals %}
+    {% for ce in craft_essence %}
     <div class="col-sm-2">
       <div class="card justify-content-center" style="width: 275px;">
         <div class="card-header  text-center">
-          <a href="{{ servant.collectionNo}} ">
-          <p class="card-title bold_text">{{ servant.name }}</p>
+          <a href="">
+          <p class="card-title bold_text">{{ ce.name }}</p>
           </a>
         </div>
-          <img class="card-img-top" src="{{ servant.face }}" alt="Card image cap">
+          <img class="card-img-top" src="{{ ce.face }}" alt="Card image cap">
           <div class="card-body text-center">
-            <p class="card-text" style="text-transform: capitalize;">{{ servant.attribute }}</p>
-            <p class="card-text"> Atk : {{ servant.atkMax }}</p>
-            <p class="card-text">Hp : {{ servant.hpMax }}</p>
-            <p class="card-text"><img class="star{{servant.rarity}}"></p>
+            <p class="card-text" style="text-transform: capitalize;">{{ ce.flag }}</p>
+            <p class="card-text"> AtkMax : {{ ce.atkMax }}</p>
+            <p class="card-text">HpMax : {{ ce.hpMax }}</p>
+            <p class="card-text"><img class="star{{ce.rarity}}"></p>
           </div>
         <div class="card-footer text-center">
           <img class="{{ servant.className }}" >

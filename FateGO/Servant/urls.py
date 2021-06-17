@@ -18,7 +18,9 @@ from Servant import views
 
 urlpatterns = [
     path('', views.Servant, name='servant'),
+    path('main', views.Servant, name='servant'),
     path('a', views.current_datetime, name='current_datetime'),
+    path('ce', views.craftEssence, name='craftEssence'),
     path('<int:collectionNo>', views.informationCharacter, name='informationCharacter'),
 ]
 

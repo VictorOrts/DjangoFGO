@@ -11,6 +11,12 @@
     <script  src="{% static 'js/main.js' %}"></script>
   </head>
   <body onload="putFirstImage()">
+    {% block content %}
+
+
+{% include "static/webs/bar.html" %}
+  
+{% endblock %}
    <div class="container">
     <div id="content" class="text-center">                
         <h1 class="fGo">Fate Grand Order</h1>        

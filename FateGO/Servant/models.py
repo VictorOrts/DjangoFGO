@@ -6,7 +6,7 @@ class Servantch(models.Model):
     id  =  models.AutoField(primary_key=True)
     unique_id = models.CharField(max_length=5)
     collectionNo = models.CharField(max_length=5)
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=50)
     typeS = models.CharField(max_length=30)
     flag = models.CharField(max_length=30)
     className = models.CharField(max_length=30)

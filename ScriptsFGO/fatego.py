@@ -133,6 +133,9 @@ try:
             if pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/danger.png',confidence=match_value):
                 current_print("Noble Phantasm")
                 noble_phantasm()
+            elif pyautogui.locateOnScreen('img/round3event.png',confidence=match_value) and pyautogui.locateOnScreen('img/servantchecknp.png',confidence=match_value):
+                current_print("Noble Phantasm Event")
+                noble_phantasm()
             elif pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
                 current_print("Turno")
                 oneturn()

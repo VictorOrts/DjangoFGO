@@ -154,6 +154,16 @@ try:
             current_print("Check Exp Gained Image")
             x,y = pyautogui.locateCenterOnScreen('img/expgained.png',confidence=match_value)
             mouse_cycle(x,y)
+        elif pyautogui.locateOnScreen('img/motivation.png',confidence=match_value):
+            #click_to_next_game()
+            current_print("Motivation")
+            x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
+            mouse_cycle(x,y)
+        elif pyautogui.locateOnScreen('img/imagination.png',confidence=match_value):
+            #click_to_next_game()
+            current_print("Imagination")
+            x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
+            mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/itemsdropped.png',confidence=match_value):
             current_print("Check Items Dropped Image")
             click_to_next_game()

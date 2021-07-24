@@ -122,6 +122,7 @@ def current_print(info):
     print(current_time, info )
     return current_time
 
+
 try:
     start_date = current_print("Starting Bot")
     
@@ -164,6 +165,11 @@ try:
         elif pyautogui.locateOnScreen('img/imagination.png',confidence=match_value):
             #click_to_next_game()
             current_print("Imagination")
+            x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
+            mouse_cycle(x,y)
+        elif pyautogui.locateOnScreen('img/tecnica.png',confidence=match_value):
+            #click_to_next_game()
+            current_print("Tecnica")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/itemsdropped.png',confidence=match_value):

@@ -127,7 +127,8 @@ try:
     
     while True:
         pyautogui.PAUSE = 2
-        if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
+        if pyautogui.locateOnScreen('img/battlemenu.png',confidence=match_value):
+        #if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
             #noble_phantasm()
             #current_print("Check Attack Image")
             if pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/danger.png',confidence=match_value):
@@ -139,7 +140,8 @@ try:
             elif pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/servantcheckrice.png',confidence=match_value):
                 current_print("Noble Phantasm Event rice")
                 noble_phantasm()
-            elif pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
+            #elif pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
+            elif pyautogui.locateOnScreen('img/battlemenu.png',confidence=match_value):
                 current_print("Turno")
                 oneturn()
             

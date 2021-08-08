@@ -132,7 +132,7 @@ try:
     while True:
         pyautogui.PAUSE = 2
         if pyautogui.locateOnScreen('img/cara.png',confidence=match_value):
-            @logger.catch
+            
             if pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/danger.png',confidence=match_value):
                 logger.info("Noble Phantasm")
                 noble_phantasm()
@@ -182,10 +182,4 @@ except KeyboardInterrupt:
     logger.info("Termino el bot -> ")
     logger.info("Numero de partidas "+str(repeat_game))
 
-"""
 
-
-skills
-
-
-"""

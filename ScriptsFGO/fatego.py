@@ -1,7 +1,6 @@
 from logging import log
 import pyautogui,sys
 from loguru import logger
-from datetime import datetime
 
 start_date= None
 end_date = None
@@ -111,19 +110,15 @@ def no_stamina():
         mouse_cycle(x,y)
         x,y = pyautogui.locateCenterOnScreen('img/ok.png',confidence=match_value)
         mouse_cycle_short_long(x,y)
-        print("Pick Servant")
+        logger.info("Pick Servant")
+        pyautogui.PAUSE = 2
         mouse_cycle_short_long(960,433)
     else:
-        print("Pick Servant")
+        logger.info("Pick Servant")
+        pyautogui.PAUSE = 2
         mouse_cycle_short_long(960,433)
 
-#os.system(r"scrcpy\scrcpy.exe")
-def current_print(info):
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    print(current_time, info )
-    return current_time
-    
+
 
 try:
     logger.add("test1.log")

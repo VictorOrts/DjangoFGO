@@ -1,4 +1,6 @@
-import pyautogui, sys, time, os
+from logging import log
+import pyautogui,sys
+from loguru import logger
 from datetime import datetime
 
 start_date= None
@@ -121,66 +123,64 @@ def current_print(info):
     current_time = now.strftime("%H:%M:%S")
     print(current_time, info )
     return current_time
-
+    
 
 try:
-    start_date = current_print("Starting Bot")
-    
+    logger.add("test1.log")
+    #logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>")
+    logger.debug("STARTING BOT")
     while True:
         pyautogui.PAUSE = 2
         if pyautogui.locateOnScreen('img/cara.png',confidence=match_value):
-        #if pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
-            #noble_phantasm()
-            #current_print("Check Attack Image")
+            @logger.catch
             if pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/danger.png',confidence=match_value):
-                current_print("Noble Phantasm")
+                logger.info("Noble Phantasm")
                 noble_phantasm()
             elif pyautogui.locateOnScreen('img/round3event.png',confidence=match_value) and pyautogui.locateOnScreen('img/servantchecknp.png',confidence=match_value):
-                current_print("Noble Phantasm Event")
+                logger.info("Noble Phantasm Event")
                 noble_phantasm()
             elif pyautogui.locateOnScreen('img/round3.png',confidence=match_value) and pyautogui.locateOnScreen('img/servantcheckrice.png',confidence=match_value):
-                current_print("Noble Phantasm Event rice")
+                logger.info("Noble Phantasm Event rice")
                 noble_phantasm()
             #elif pyautogui.locateOnScreen('img/attack.png',confidence=match_value):
             elif pyautogui.locateOnScreen('img/cara.png',confidence=match_value):
-                current_print("Turno")
+                logger.info("Turno")
                 oneturn()
             
         elif pyautogui.locateOnScreen('img/servantbond.png',confidence=match_value):
             #click_to_next_game()
-            current_print("Check Servant Bond Image")
+            logger.info("Check Servant Bond Image")
             x,y = pyautogui.locateCenterOnScreen('img/servantbond.png',confidence=match_value)
             mouse_cycle(x,y)
             repeat_game+=1
         elif pyautogui.locateOnScreen('img/expgained.png',confidence=match_value):
             #click_to_next_game()
-            current_print("Check Exp Gained Image")
+            logger.info("Check Exp Gained Image")
             x,y = pyautogui.locateCenterOnScreen('img/expgained.png',confidence=match_value)
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/motivation.png',confidence=match_value):
             #click_to_next_game()
-            current_print("Motivation")
+            logger.info("Motivation")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/imagination.png',confidence=match_value):
             #click_to_next_game()
-            current_print("Imagination")
+            logger.info("Imagination")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/tecnica.png',confidence=match_value):
             #click_to_next_game()
-            current_print("Tecnica")
+            logger.info("Tecnica")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/itemsdropped.png',confidence=match_value):
-            current_print("Check Items Dropped Image")
+            logger.info("Check Items Dropped Image")
             click_to_next_game()
                 
         
 except KeyboardInterrupt:
-    current_print("Empezo el bot -> "+str(start_date))
-    current_print("Numero de partidas "+str(repeat_game))
-    print('\n') 
+    logger.info("Termino el bot -> ")
+    logger.info("Numero de partidas "+str(repeat_game))
 
 """
 

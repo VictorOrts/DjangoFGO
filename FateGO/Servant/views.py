@@ -48,7 +48,7 @@ def Servant(request):
         )
         # Code to avoid className beast not servants
         namefilter = meal_data.name.find("servantfilter")
-        meal_data.save() if namefilter < b else meal_data.delete()
+        #meal_data.save() if namefilter < b else meal_data.delete()
         all_meals.append(meal_data)
 
     #all_meals.order_by('-collectionNo')

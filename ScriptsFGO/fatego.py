@@ -101,9 +101,9 @@ def click_to_next_game():
     if pyautogui.locateOnScreen('img/repeat.png',confidence=match_value):
         x,y = pyautogui.locateCenterOnScreen('img/repeat.png',confidence=match_value)
         mouse_cycle(x,y)
-        no_stamina()
+        check_stamina()
 
-def no_stamina():
+def check_stamina():
     if  pyautogui.locateOnScreen('img/goldenapple.png',confidence=match_value):
         pyautogui.PAUSE = 2
         x,y = pyautogui.locateCenterOnScreen('img/goldenapple.png',confidence=match_value)
@@ -115,7 +115,8 @@ def no_stamina():
         mouse_cycle_short_long(960,433)
     else:
         logger.info("Pick Servant")
-        pyautogui.PAUSE = 2
+        pyautogui.PAUSE = 3
+        x,y = pyautogui.locateCenterOnScreen('img/Confirmss.png',confidence=match_value)
         mouse_cycle_short_long(960,433)
 
 
@@ -170,11 +171,16 @@ try:
             mouse_cycle(x,y)
         elif pyautogui.locateOnScreen('img/itemsdropped.png',confidence=match_value):
             logger.info("Check Items Dropped Image")
-            click_to_next_game()
+            x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
+            mouse_cycle(x,y)
+        elif pyautogui.locateOnScreen('img/repeat.png',confidence=match_value):
+            x,y = pyautogui.locateCenterOnScreen('img/repeat.png',confidence=match_value)
+            mouse_cycle(x,y)
+            check_stamina()
+        else:
+            check_stamina()
                 
         
 except KeyboardInterrupt:
     logger.info("Termino el bot -> ")
     logger.info("Numero de partidas "+str(repeat_game))
-
-

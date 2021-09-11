@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'FateGO.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'root',
-        'PASSWORD': 'main',
+          'NAME': 'django',
+          'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3333',
         'OPTIONS': {'charset': 'utf8mb4'},

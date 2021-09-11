@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3333,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "FateGO",
+            "database": "django",
+            "username": "root"
+        }
+    ]
+}

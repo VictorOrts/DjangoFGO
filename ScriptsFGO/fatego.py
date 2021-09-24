@@ -104,6 +104,7 @@ def click_to_next_game():
         check_stamina()
 
 def check_stamina():
+    pyautogui.PAUSE = 3
     if  pyautogui.locateOnScreen('img/goldenapple.png',confidence=match_value):
         pyautogui.PAUSE = 2
         x,y = pyautogui.locateCenterOnScreen('img/goldenapple.png',confidence=match_value)
@@ -115,7 +116,7 @@ def check_stamina():
         mouse_cycle_short_long(960,433)
     else:
         logger.info("Pick Servant")
-        pyautogui.PAUSE = 3
+        pyautogui.PAUSE = 4
         x,y = pyautogui.locateCenterOnScreen('img/Confirmss.png',confidence=match_value)
         mouse_cycle_short_long(960,433)
 
@@ -164,7 +165,7 @@ try:
             logger.info("Imagination")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
             mouse_cycle(x,y)
-        elif pyautogui.locateOnScreen('img/tecnica.png',confidence=match_value):
+        elif pyautogui.locateOnScreen('img/magifd.png',confidence=match_value):
             #click_to_next_game()
             logger.info("Tecnica")
             x,y = pyautogui.locateCenterOnScreen('img/next.png',confidence=match_value)
@@ -176,8 +177,6 @@ try:
         elif pyautogui.locateOnScreen('img/repeat.png',confidence=match_value):
             x,y = pyautogui.locateCenterOnScreen('img/repeat.png',confidence=match_value)
             mouse_cycle(x,y)
-            check_stamina()
-        else:
             check_stamina()
                 
         

@@ -112,12 +112,12 @@ def check_stamina():
         x,y = pyautogui.locateCenterOnScreen('img/ok.png',confidence=match_value)
         mouse_cycle_short_long(x,y)
         logger.info("Pick Servant")
-        pyautogui.PAUSE = 2
+        pyautogui.PAUSE = 3
         mouse_cycle_short_long(960,433)
     else:
         logger.info("Pick Servant")
-        pyautogui.PAUSE = 4
-        x,y = pyautogui.locateCenterOnScreen('img/Confirmss.png',confidence=match_value)
+        pyautogui.PAUSE = 5
+        #x,y = pyautogui.locateCenterOnScreen('img/Confirmss.png',confidence=match_value)
         mouse_cycle_short_long(960,433)
 
 
